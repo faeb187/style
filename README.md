@@ -2,15 +2,7 @@
 
 easily parse an array of styles to a minified css string.
 
-## Why?
-
-Maybe you want to save your site styles in a db and you need a format to easily add/remove styles.
-
-## How?
-
-Just save your site styles as array (e.g. in MongoDB)
-
-### Example
+## Example
 
 ```coffee
 # put the file where you like
