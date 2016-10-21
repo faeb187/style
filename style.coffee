@@ -13,26 +13,18 @@ export Style = (->
     # @desc     PARSE STYLE ARRAY
     # @param    styles  {Array}   array of style definitions
     # @return   css     {String}  minified css string
-    # @require  CoffeeScript >= 1.11.0 (ES2015 import/export syntax)
-    # @example
-    #   import { Style } from 'path/to/[fileName]'
-    #   css = Style.parse [
-    #     [ 'body', 'background', '#000' ],
-    #     [ 'body', 'overflow'  , 'hidden' ],
-    #     [ 'h2'  , 'color'     , 'blue' ]
-    #   ]
     parse: ( styles ) ->
-      css = tagOpen = ''
+      css = open = ''
 
       # move through styles
       for style in styles
         tag = style[ 0 ]
 
         # new tag starting
-        if tag isnt tagOpen
+        if tag isnt open
           if css then css += '}'
           css += tag + '{'
-          tagOpen = tag
+          open = tag
      
         # append css style
         css += style[ 1 ] + ':' + style[ 2 ] + ';'
