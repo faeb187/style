@@ -22,3 +22,7 @@ console.log Style.parse styles
 # console output:
 # body{background:#000;overflow:hidden;},h2{color:#eee;}
 ```
+
+## CoffeeScript ES2015 Syntax
+
+ES2015 import/export syntax was added in CoffeeScript version 1.11.0.
