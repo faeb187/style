@@ -4,7 +4,7 @@ easily parse an array of styles to a minified css string.
 
 ## Example
 
-```coffee
+```coffeescript
 # put the file where you like
 # example path: /lib/helpers/style.coffee
 import { Style } from '/lib/helpers/style'
