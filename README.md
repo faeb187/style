@@ -6,8 +6,8 @@ easily parse an array of styles to a minified css string.
 
 ```coffeescript
 # put the file where you like
-# example path: /lib/helpers/style.coffee
-import { Style } from '/lib/helpers/style'
+# example path: /client/lib/helpers/style.coffee
+import { Style } from '/client/lib/helpers/style'
 
 # example styles to parse
 styles = [
@@ -23,7 +23,7 @@ console.log Style.parse styles
 # body{background:#000;overflow:hidden;},h2{color:#eee;}
 
 # render styles
-console.log Style.render styles
+Style.render styles
 
 # gets appended as <style> into <head>
 ```
