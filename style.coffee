@@ -10,6 +10,13 @@ export Style = (->
  
   return {
 
+    # @desc     RENDER STYLES IN DOCUMENT HEAD
+    # @param    styles  {Array}   array of style definitions
+    # @return   void
+    render: ( styles ) ->
+      $( 'head' ).append '<style class="ankh-app-css">' +
+        @parse( styles ) + '</style>'
+
     # @desc     PARSE STYLE ARRAY
     # @param    styles  {Array}   array of style definitions
     # @return   css     {String}  minified css string

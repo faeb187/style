@@ -21,6 +21,11 @@ console.log Style.parse styles
 
 # console output:
 # body{background:#000;overflow:hidden;},h2{color:#eee;}
+
+# render styles
+console.log Style.render styles
+
+# gets appended as <style> into <head>
 ```
 
 ## CoffeeScript ES2015 Syntax
