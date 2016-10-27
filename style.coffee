@@ -7,15 +7,35 @@
 
 # EXPORTS
 export Style = (->
- 
+
+  # PRIVATE
+  # nothing here yet...
+  
+  # PUBLIC
   return {
 
     # @desc     RENDER STYLES IN DOCUMENT HEAD
     # @param    styles  {Array}   array of style definitions
+    # @param    opt.id  {String}  id of <style> element
     # @return   void
-    render: ( styles ) ->
-      $( 'head' ).append '<style class="ankh-app-css">' +
-        @parse( styles ) + '</style>'
+    render: ( styles, opt ) ->
+      opt = opt or {}
+
+      $style = $( '<style>' ).text @parse styles
+
+      # style is UNIQUE
+      # (opt.id available)
+      if opt.id
+        
+        # REMOVE EXISTING style by id
+        $( '#' + opt.id ).remove()
+        
+        # SET ID of style
+        $style[ 0 ].id = opt.id
+      
+      # append style to <head>
+      $( 'head' ).append $style[ 0 ]
+
 
     # @desc     PARSE STYLE ARRAY
     # @param    styles  {Array}   array of style definitions
@@ -27,16 +47,22 @@ export Style = (->
       for style in styles
         tag = style[ 0 ]
 
-        # new tag starting
+        # NEW TAG starting
         if tag isnt open
+
+          # CLOSE PREVIOUS css class
           if css then css += '}'
+
+          # OPEN NEW css class
           css += tag + '{'
+
+          # set CURRENTLY OPEN TAG
           open = tag
      
-        # append css style
+        # APPEND property value pair
         css += style[ 1 ] + ':' + style[ 2 ] + ';'
 
-      # close last tag and return
+      # CLOSE LAST TAG and return
       css += '}'
   }
 
