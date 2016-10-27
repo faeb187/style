@@ -22,10 +22,13 @@ console.log Style.parse styles
 # console output:
 # body{background:#000;overflow:hidden;},h2{color:#eee;}
 
-# render styles
+# gets appended as <style> into <head>
 Style.render styles
 
-# gets appended as <style> into <head>
+# you can set the id of <style>
+# alredy existing style with id gets replaced
+Style.render styles, id: 'my-style'
+
 ```
 
 ## CoffeeScript ES2015 Syntax

@@ -19,21 +19,15 @@ export Style = (->
     # @param    opt.id  {String}  id of <style> element
     # @return   void
     render: ( styles, opt ) ->
-      opt = opt or {}
+      opt     = opt or {}
+      $style  = $( '<style>' ).text @parse styles
 
-      $style = $( '<style>' ).text @parse styles
-
-      # style is UNIQUE
-      # (opt.id available)
+      # replace existing <style> when id
       if opt.id
-        
-        # REMOVE EXISTING style by id
         $( '#' + opt.id ).remove()
-        
-        # SET ID of style
         $style[ 0 ].id = opt.id
       
-      # append style to <head>
+      # render css
       $( 'head' ).append $style[ 0 ]
 
 
@@ -43,27 +37,24 @@ export Style = (->
     parse: ( styles ) ->
       css = open = ''
 
-      # move through styles
       for style in styles
         tag = style[ 0 ]
 
         # NEW TAG starting
         if tag isnt open
 
-          # CLOSE PREVIOUS css class
+          # close previous and open next
           if css then css += '}'
-
-          # OPEN NEW css class
           css += tag + '{'
 
-          # set CURRENTLY OPEN TAG
+          # remember current
           open = tag
      
-        # APPEND property value pair
+        # APPEND css property
         css += style[ 1 ] + ':' + style[ 2 ] + ';'
-
-      # CLOSE LAST TAG and return
+      
       css += '}'
+
   }
 
 )()
